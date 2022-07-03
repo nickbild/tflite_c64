@@ -40,7 +40,7 @@ for line in open("output.txt"):
         output_zero_point.append(line.replace("NAB OUTPUT ZERO POINT ", ""))
 
 
-x = 5
+x = 1
 l1_input = int(x / 0.024574 - 128)
 
 l1_results = []
@@ -53,11 +53,15 @@ for i in range(16):
     acc += int(bias_data[i])
 
     if acc > 0:
-        acc = (acc * float(output_multiplier[i]) + 2**30) / 2**31
+        acc = (acc * int(output_multiplier[i]) + 2**30) / 2**31
     else:
-        acc = (acc * float(output_multiplier[i]) + (1 - 2**30)) / 2**31
+        acc = (acc * int(output_multiplier[i]) + (1 - 2**30)) / 2**31
+
+    print(acc)
 
     acc = int(int(acc) / 2**int(right_shift[i]))
+
+    print(acc)
 
     acc += int(output_offset[i])
 
@@ -81,9 +85,9 @@ for node in range(16):
     acc += int(bias_data[node+16])
 
     if acc > 0:
-        acc = (acc * float(output_multiplier[node+16]) + 2**30) / 2**31
+        acc = (acc * int(output_multiplier[node+16]) + 2**30) / 2**31
     else:
-        acc = (acc * float(output_multiplier[node+16]) + (1 - 2**30)) / 2**31
+        acc = (acc * int(output_multiplier[node+16]) + (1 - 2**30)) / 2**31
 
     acc = int(int(acc) / 2**int(right_shift[node+16]))
 
@@ -108,9 +112,9 @@ for l2 in range(16):
 acc += int(bias_data[32])
 
 if acc > 0:
-    acc = (acc * float(output_multiplier[32]) + 2**30) / 2**31
+    acc = (acc * int(output_multiplier[32]) + 2**30) / 2**31
 else:
-    acc = (acc * float(output_multiplier[32]) + (1 - 2**30)) / 2**31
+    acc = (acc * int(output_multiplier[32]) + (1 - 2**30)) / 2**31
 
 acc = int(int(acc) / 2**int(right_shift[32]))
 
