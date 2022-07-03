@@ -103,12 +103,12 @@ for i in range(16):
     print('{0} l1({1}) = acc'.format(line_number, i+1))
     line_number += 10
 
-print('{0} for i=1 to 16'.format(line_number))
-line_number += 10
-print('{0} print l1(i)'.format(line_number))
-line_number += 10
-print('{0} next i'.format(line_number))
-line_number += 10
+# print('{0} for i=1 to 16'.format(line_number))
+# line_number += 10
+# print('{0} print l1(i)'.format(line_number))
+# line_number += 10
+# print('{0} next i'.format(line_number))
+# line_number += 10
 
 # Layer 2
 
@@ -164,35 +164,70 @@ for node in range(16):
     print('{0} l2({1}) = acc'.format(line_number, node+1))
     line_number += 10
 
-print('{0} for i=1 to 16'.format(line_number))
-line_number += 10
-print('{0} print l12i)'.format(line_number))
-line_number += 10
-print('{0} next i'.format(line_number))
-line_number += 10
+# print('{0} for i=1 to 16'.format(line_number))
+# line_number += 10
+# print('{0} print l2(i)'.format(line_number))
+# line_number += 10
+# print('{0} next i'.format(line_number))
+# line_number += 10
 
 # Layer 3
 
 acc = 0
+
+print('{0} acc = 0'.format(line_number))
+line_number += 10
+
 for l2 in range(16):
     offset = 16 + (16*16) + l2
     acc += (int(filter_vals[offset]) + int(filter_offsets[offset])) * (l2_results[l2] + int(input_offsets[offset]))
 
+    print('{0} acc = acc + (({1} + {2}) * (l2({3}) + {4}))'.format(line_number, int(filter_vals[offset]), int(filter_offsets[offset]), l2+1, int(input_offsets[offset]) ))
+    line_number += 10
+    
+
 acc += int(bias_data[32])
+
+print('{0} acc = acc + {1}'.format(line_number, int(bias_data[32])))
+line_number += 10
+
 
 if acc > 0:
     acc = (acc * int(output_multiplier[32]) + 2**30) / 2**31
 else:
     acc = (acc * int(output_multiplier[32]) + (1 - 2**30)) / 2**31
 
-acc = int(int(acc) / 2**int(right_shift[32]))
 
+print('{0} if acc>0 then acc=(acc*{1} + 2^30) / 2^31'.format(line_number, int(output_multiplier[32])))
+line_number += 10
+print('{0} if acc<=0 then acc=(acc*{1} + (1-2^30)) / 2^31'.format(line_number, int(output_multiplier[32])))
+line_number += 10
+
+acc = int(int(acc) / 2**int(right_shift[32]))
 acc += int(output_offset[32])
+
+
+print('{0} acc = (int((acc)+0.5) / 2^{1}) + {2}'.format(line_number, int(right_shift[32]), int(output_offset[32])))
+line_number += 10
+print('{0} acc = int((acc)+0.5)'.format(line_number))
+line_number += 10
+
 
 if acc < -128:
     acc = -128
 elif acc > 127:
     acc = 127
+
+print('{0} if acc < -128 then acc = -128'.format(line_number))
+line_number += 10
+print('{0} if acc > 127 then acc = 127'.format(line_number))
+line_number += 10
+
+print('{0} result = (acc - {1}) * {2}'.format(line_number, int(output_zero_point[0]), float(output_scale[0])))
+line_number += 10
+
+print('{0} print result'.format(line_number))
+line_number += 10
 
 
 print(l1_results)
