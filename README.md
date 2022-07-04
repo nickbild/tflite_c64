@@ -31,7 +31,7 @@ Running a neural network trained to approximate the sine function on a Commodore
 ![](https://raw.githubusercontent.com/nickbild/tflite_c64/main/media/screen2_lg.jpg)
 
 
-A short sample of the generated C64 BASIC code:
+A short sample of the generated C64 BASIC code ([full listing here](https://github.com/nickbild/tflite_c64/blob/main/neural_net.bas)):
 
 ```
 10 dim l1(16)
