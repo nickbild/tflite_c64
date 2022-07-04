@@ -12,7 +12,7 @@ TensorFlow Lite for Microcontrollers is an open-source machine learning framewor
 
 Given that TF Lite for Microcontrollers runs on some heavily resource-constrained devices, I got to wondering whether or not I could run inferences against these models on a Commodore 64.
 
-To do this, I chose not to use an interpreter.  The TF Lite Micro team explains why they did in [their paper](https://arxiv.org/pdf/2010.08678.pdf) (i.e. portability, maintainability).  And that was a good choice for the project to be sure, but I'm dealing with nearly 40 year old hardware, so I cannot afford the overhead of an interpreter.  Instead, I [modified the TF Lite Micro source code](https://github.com/nickbild/tflite_c64/tree/main/tflite-micro) so that when running on the host computer, it will emit all of the important details about the model, e.g.: operations to perform, filter values, biases, etc.
+To do this, I chose not to use an interpreter.  The TF Lite Micro team explains why they did in [their paper](https://arxiv.org/pdf/2010.08678.pdf) (i.e. portability, maintainability).  And that was a good choice for the project to be sure, but I'm dealing with nearly 40 year old hardware, so I cannot afford the overhead of an interpreter.  Instead, I [modified the TF Lite Micro source code](https://github.com/nickbild/tflite_c64/tree/main/tflite-micro) so that when running an interpreter on the host computer, it will emit all of the important details about the model, e.g.: operations to perform, filter values, biases, etc.
 
 I then parse that output with a [Python script](https://github.com/nickbild/tflite_c64/blob/main/parse_output_c64.py) to turns it into C64-compatible BASIC (this could be updated to produce 6502 assembly code, but for this proof of concept, BASIC was actually fast enough).
 
@@ -21,6 +21,8 @@ To test things out, I built the [Hello World](https://github.com/tensorflow/tfli
 Since the code running on the C64 is the same thing that runs on the host computer (or microcontroller), it performs as well as the model has been trained to perform.  There is no accuracy reduction from running on the C64.
 
 ## Media
+
+Running a neural network trained to approximate the sine function on a Commodore 64:
 
 ![](https://raw.githubusercontent.com/nickbild/tflite_c64/main/media/screen2_lg.jpg)
 
