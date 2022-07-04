@@ -57,7 +57,7 @@ A short sample of the generated C64 BASIC code ([full listing here](https://gith
 
 ## Bill of Materials
 
-- 1 x Commodore 64 computer (or emulator)
+- 1 x Commodore 64 computer
 
 ## About the Author
 
