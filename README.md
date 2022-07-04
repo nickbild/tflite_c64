@@ -8,6 +8,8 @@ This project is in no way associated with, or endorsed by, Google Inc.  TensorFl
 
 ## How It Works
 
+![](https://raw.githubusercontent.com/nickbild/tflite_c64/main/media/tflite-c64-overview.jpg)
+
 TensorFlow Lite for Microcontrollers is an open-source machine learning framework in which a TensorFlow model is built and trained on a host computer.  That model is then reduced in size and computational complexity by an exporter that converts it to the TensorFlow Lite format.  For the tiniest of compute platforms — microcontrollers — that model is then converted to a C array containing the model structure and any trained parameters, like weights and biases.  On the microcontroller, an interpreter parses the C array to extract operations and data to run inferences against new input data.
 
 Given that TF Lite for Microcontrollers runs on some heavily resource-constrained devices, I got to wondering whether or not I could run inferences against these models on a Commodore 64.
