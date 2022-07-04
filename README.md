@@ -22,6 +22,8 @@ Since the code running on the C64 is the same thing that runs on the host comput
 
 ## Media
 
+![](https://raw.githubusercontent.com/nickbild/tflite_c64/main/media/screen2_lg.jpg)
+
 ## Bill of Materials
 
 - 1 x Commodore 64 computer (or emulator)
