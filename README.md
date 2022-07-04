@@ -30,6 +30,31 @@ Running a neural network trained to approximate the sine function on a Commodore
 
 ![](https://raw.githubusercontent.com/nickbild/tflite_c64/main/media/screen2_lg.jpg)
 
+
+A short sample of the generated C64 BASIC code:
+
+```
+10 dim l1(16)
+20 dim l2(16)
+30 input "enter a number:"; a%
+40 a% = int((a% / 0.024574 - 128)+0.5)
+50 acc = ((117 + 0) * (a% + 128)) + 6
+60 if acc>0 then acc=(acc*1169513172 + 2^30) / 2^31
+70 if acc<=0 then acc=(acc*1169513172 + (1-2^30)) / 2^31
+80 acc = (int((acc)+0.5) / 2^6) + -128
+90 acc = int((acc)+0.5)
+100 if acc < -128 then acc = -128
+110 if acc > 127 then acc = 127
+120 l1(1) = acc
+130 acc = ((28 + 0) * (a% + 128)) + 2935
+140 if acc>0 then acc=(acc*1169513172 + 2^30) / 2^31
+150 if acc<=0 then acc=(acc*1169513172 + (1-2^30)) / 2^31
+160 acc = (int((acc)+0.5) / 2^6) + -128
+170 acc = int((acc)+0.5)
+180 if acc < -128 then acc = -128
+190 if acc > 127 then acc = 127
+```
+
 ## Bill of Materials
 
 - 1 x Commodore 64 computer (or emulator)
