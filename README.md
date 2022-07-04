@@ -1,4 +1,4 @@
-# TensorFlow Lite for Commodore 64
+# TensorFlow Lite for Commodore 64s
 
 Run inferences using TensorFlow Lite for Microcontrollers on a Commodore 64.
 
