@@ -16,7 +16,7 @@ To do this, I chose not to use an interpreter.  The TF Lite Micro team explains 
 
 I then parse that output with a [Python script](https://github.com/nickbild/tflite_c64/blob/main/parse_output_c64.py) to turns it into C64-compatible BASIC (this could be updated to produce 6502 assembly code, but for this proof of concept, BASIC was actually fast enough).
 
-To test things out, I built the [Hello World](https://github.com/tensorflow/tflite-micro/tree/main/tensorflow/lite/micro/examples/hello_world) example that builds and trains a small, 3 layer neural network that learns to approximate the sine function.  After running it on the host computer and emitting the model info, I used by parser to create [this BASIC code](https://github.com/nickbild/tflite_c64/blob/main/neural_net.bas) that can be used to run arbitrary inferences against the neural network on a Commodore 64.  Each inference takes a few seconds to run on a physical C64 computer.
+To test things out, I built the [Hello World](https://github.com/tensorflow/tflite-micro/tree/main/tensorflow/lite/micro/examples/hello_world) example that builds and trains a small, 3 layer neural network that learns to approximate the sine function.  After running it on the host computer and emitting the model info, I used my parser to create [this BASIC code](https://github.com/nickbild/tflite_c64/blob/main/neural_net.bas) that can be used to run arbitrary inferences against the neural network on a Commodore 64.  Each inference takes a few seconds to run on a physical C64 computer.
 
 Since the code running on the C64 is the same thing that runs on the host computer (or microcontroller), it performs as well as the model has been trained to perform.  There is no accuracy reduction from running on the C64.
 
