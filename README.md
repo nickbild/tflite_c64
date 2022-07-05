@@ -26,6 +26,10 @@ Since the code running on the C64 is the same thing logically as what runs on th
 
  [YouTube Demonstration](https://www.youtube.com/watch?v=D3Ii4mchgnA)
 
+Should I be concerned about what my C64 is reading lately?
+
+![](https://raw.githubusercontent.com/nickbild/tflite_c64/main/media/c64_book_sm.jpg)
+
 Running a neural network trained to approximate the sine function on a Commodore 64:
 
 ![](https://raw.githubusercontent.com/nickbild/tflite_c64/main/media/screen2_lg.jpg)
